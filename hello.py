@@ -15,6 +15,16 @@ def initialize_map (this_file,g_map,main_player):
         x=a.readline()
         line += 1
         
+def in_boundary (pos_x,pos_y)
+    if pos_x > limit_x 
+        return 0
+    if pos_y > limit_y
+        return 0
+    if pos_x < 1
+        return 0
+    if pos_y < 1
+        return 0
+    return 1
 
 def replace_line(file_path,pattern,subst):
     fh, abs_path = mkstemp()
