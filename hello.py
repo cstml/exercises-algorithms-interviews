@@ -15,7 +15,9 @@ def initialize_map (this_file,g_map,main_player):
         x=a.readline()
         line += 1
         
-def in_boundary (pos_x,pos_y)
+def in_boundary (pos_x,pos_y,this_map)
+    lim_y = len(this_map[1])
+    lim_x = las
     if pos_x > limit_x 
         return 0
     if pos_y > limit_y
