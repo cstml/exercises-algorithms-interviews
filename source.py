@@ -3,10 +3,32 @@ from shutil import move
 from os import fdopen, remove
 
 #initialize the map and create the player
-def initialize_map (this_file,g_map,main_player):
-    a = open (this_file,"r")
-    line=1;
-    x = a.readline()
+class character (object):
+    
+    def __init__ (self):
+        self.posx=0
+        self.posy=0
+        self.character='C'
+        sel.health=100
+
+    def move_right (self):
+        self.posy += 1
+
+    def move_left (self):
+        self.posy -= 1
+
+    def move_up (self):
+        self.posx -= 1
+
+    def move_down (self) :
+        self.posx -= 1
+
+class CLI (object)
+    
+    def __init__ (self)
+        self.board = map(list, ['___'] * 3)
+
+    x = a.readlinedd()
     while x:
         g_map[line]=list(x)
         position = x.find("X")
