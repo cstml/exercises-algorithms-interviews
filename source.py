@@ -44,7 +44,6 @@ class character (object):
         """
         print (direction,board)
         if "d" == direction :
-            print("inside D")
             line = list(board[self.posx])
             print (line)
             if line[self.posy+1] is " ": 
@@ -139,15 +138,15 @@ class CLI ():
         player.maxx=i
         
     def refresh (self):
-        #screen = "\n" * 100
-        #print (screen)
+        screen = "\n" * 100
+        print (screen)
         for i in range(len(self.board)):
             print (self.board[i]),
         print (self.player.posx)
         print (self.player.posy)
 
     def move (self, player):
-        message = "which way are you going to move: "
+        message = "Which way are you going to move: \n(Use WASD to move and 2xQ to quit)"
         print (message)
         self.moveWay = ic.get()
         if "w" in self.moveWay :
