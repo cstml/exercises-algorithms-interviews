@@ -3,6 +3,7 @@ A simple game I developed to learn
 Python
 """
 import random
+import collections  #for the use of tuples 
 import input_commands as ic
 from tempfile import mkstemp
 from shutil import move
@@ -23,6 +24,7 @@ class zombie_character (object):
         self.posy = y
         self.character='Z'
         self.health=100
+        self.aware=[][]
 
 class player_character (object):
     """
@@ -65,99 +67,76 @@ class CLI ():
         line[character.posy]=character.character
         self.board[character.posx]="".join(line)
 
-    def move_permitted(self,direction,character,step):
+    def move_permitted(self,direction_x,direction_y,character):
         """
         Check if move is permitted
         by checking if the square where
         you want to move is free
         and inside the map
         """
-        if (direction == 0) :   #if direction is up
-            if character.posx > step:    
-                if self.board[character.posx-step][character.posy] is " ": 
+        x = direction_x+character.posx
+        y = direction_y+character.posy
+        if (x>=0) && (x<=self.maxx) :   #if it is boundary
+            if (y>=0) && (y<=self.maxy)
+                if self.board[x][y] is " ": 
                     return 1
-                elif self.board[character.posx-step][character.posy] is "X":
-                    return 2
-                else:
-                    return 0
-
-        elif (direction == 3):    #if direction is right
-            if character.posy +step < self.maxy:
-                if self.board[character.posx][character.posy+step]==" ": 
-                    return 1
-                elif self.board[character.posx][character.posy+step] is "X": 
-                    return 2
-            else:
-                return 0
-
-        elif (direction == 2):    #if direction is down
-            if character.posx + step < self.maxx:
-                if self.board[character.posx+step][character.posy]==" ": 
-                    return 1
-                if self.board[character.posx+step][character.posy] is "X": 
-                    return 2                
-                else:
-                    return 0
-            else:
-                return 0
-
-        elif (direction == 1):    #if direction is left
-            if character.posy > step:
-                if self.board[character.posx][character.posy-step]==" ": 
-                    return 1
-                elif self.board[character.posx][character.posy-step] is "X": 
+                elif self.board[x][y] is "X":
                     return 2
                 else:
                     return 0
         return 0
 
+    def translate_move(self,moveWay):
+        if moveWay is 0 :
+            self.move(-1,0,character)
+        elif self.moveWay is 1 :
+            self.move(0,-1,character)
+        elif self.moveWay is 2 :
+            self.move(1,0,character)
+        elif self.moveWay is 3 :
+            self.move(0,1,character)
+
     def look_zombie(self,zom):
         """
         Define zombie seeing the player
         """
-        for look_move in range(0,3,1):
-            for step in range(1,4,1):
-                if self.move_permitted(look_move,zom,step) is 2:
-                    self.move(look_move,zom)
-                    return look_move
-                elif self.move_permitted(look_move,zom,step) is 0:
-                    break
-        counter = True
-        while counter:
+        zombie_moved=0
+        for look_x in range(-4,4):
+            for look_y in range(-4,4):
+                    position_x=zom.posx+look_x
+                    position_y=zom.posy+look_y
+                    ok = self.move_permitted(position_x,position_y,zom)
+
+                    if  ok is 2:
+                        if look_x != 0 :
+                            move(position_x/mod(position_x),0,zom)
+                            zombie_moved = 1
+                        else :
+                            move(0,position_y,zom)
+                    
+                    elif ok is 0:
+                        break
+
+        while zombie_moved is 0:
             look_move = random.randint(0,3)
             if self.move_permitted(look_move,zom,1):
                 counter = False
                 return look_move
         
-    def move_zombie(self):
+    def move_zombies(self):
         for zom in self.zombies :
             where_to = self.look_zombie(zom)
             self.move (where_to,zom)
         
-    def move (self,direction,character):
+    def move (self,direction_x,direction_y,character):
         """
         test and move
         """
-        if self.move_permitted(direction,character,1):
-            if (direction == 3):        #if direction of movement is up (w)
-                self.erase(character)
-                character.posy += 1
-                self.draw(character)
-
-            elif (direction == 1):      #if direction of movement is left (a) 
-                self.erase(character)
-                character.posy -= 1
-                self.draw(character)
-
-            elif (direction == 0):      #if direction of movement is down (s)
-                self.erase(character)
-                character.posx -= 1
-                self.draw(character)
-
-            elif (direction == 2):      #if direction of movement is down (d)         
-                self.erase(character)
-                character.posx += 1
-                self.draw(character)    
+        if self.move_permitted(direction_x,direction_y,character):
+            self.erase(character)
+            character.posx += direction_x
+            character.posy += direction_y
+            self.draw(character)
 
     def read_map(self):
         """
@@ -176,7 +155,7 @@ class CLI ():
                         self.player.posy=counter
                         self.player.posx=i
                     if j is "Z":
-                        self.zombies.append(zombie_character(counter,i))
+                        self.zombies.append(zombie_character(i,counter))
                     counter+=1
                 i+=1
         self.maxy=len(self.board[self.player.posx])
@@ -190,17 +169,22 @@ class CLI ():
         print (self.player.posx)
         print (self.player.posy)
         for zom in self.zombies:
-            print (zom.posx)
-            print (zom.posy)
-            print (self.look_zombie(zom))
+            print (zom.posx,zom.posy)
+           
 
-    def move_character (self, character):
+    def move_player (self, character):
         message = "Which way are you going to move: \n(Use WASD to move and q to quit)"
         print (message)
         self.moveWay = ic.get()
         print (self.moveWay)
-        if self.moveWay in {0,1,2,3} :
-            self.move(self.moveWay,character)
+        if self.moveWay is 0 :
+            self.move(-1,0,character)
+        elif self.moveWay is 1 :
+            self.move(0,-1,character)
+        elif self.moveWay is 2 :
+            self.move(1,0,character)
+        elif self.moveWay is 3 :
+            self.move(0,1,character)
         elif self.moveWay == "q" :
             self.GAME=0
         else :
@@ -210,8 +194,8 @@ class CLI ():
         self.GAME = 1
         while self.GAME :
             self.refresh()
-            self.move_character(self.player)
-            self.move_zombie()
+            self.move_player(self.player)
+            self.move_zombies()
 
 if __name__ == "__main__":
     print '\n' * 100
