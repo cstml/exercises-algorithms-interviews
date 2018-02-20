@@ -1,4 +1,4 @@
-# Escape_The_(Zombie)Trolls
+# Escape_The_Zombie_Trolls
 
 __A fun project that was created as a challenge to learn Python__
 
@@ -10,6 +10,19 @@ You hear (Zombie)Trolls around you and you freak out. This is no ordinary find y
 
 ## Controls
 Use WASD to run from the zombies through the maze. When they see you, they will try and catch you.
+
+## The Zombie Trolls
+### Movement
+The Zombie_Trolls move 1 square at a time. The directions they can move are only in the up down righ or left (no diagonal movement). *That doesn't mean that they will not see you if you are diagonally placed from them though!*
+
+### What happens if they catch you?
+You loose.
+
+### What happens if you catch them?
+Yet again, you loose.
+
+### What if I push a wall over them?
+The Zombie_Troll will get *squashed* and die. No loosing this time.
 
 ## Inspiration
 the idea of the project came from :
