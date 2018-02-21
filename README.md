@@ -1,6 +1,6 @@
 # Escape_The_Zombie_Trolls
 
-__A fun project that was created as a challenge to learn Python__
+__A fun project that was created as a challenge to better accustom myself with Python__
 
 ## Story
 
