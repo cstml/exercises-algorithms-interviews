@@ -60,6 +60,16 @@ class CLI ():
         self.Direction = collections.namedtuple('Direction', 'x y')
         self.read_map()
 
+    def push_wall(self,character,direction):
+        """
+        function defines pushing a wall
+        """
+        block_x=character.posx+direction.x
+        block_y = character.posy + direction.y
+        line = list(self.board[block_x])
+        line[block_y]= '#'
+        self.board[block_x]="".join(line)
+
     def erase(self, character):
         """
         erase will delete the
@@ -96,6 +106,9 @@ class CLI ():
                     return 1
                 elif self.board[x][y] is "X":
                     return 2
+                elif self.board[x][y] is "#":
+                    if self.board[x+direction.x][y+direction.y] is " ":
+                        return 3
                 else:
                     return 0
         return 0
@@ -151,11 +164,17 @@ class CLI ():
         """
         test and move
         """
-        if self.move_permitted(direction,character):
+        if self.move_permitted(direction,character) is 1:
             self.erase(character)
             character.posx += direction.x
             character.posy += direction.y
             self.draw(character)
+        elif self.move_permitted(direction,character) is 3:
+            self.erase(character)
+            character.posx += direction.x
+            character.posy += direction.y
+            self.draw(character)
+            self.push_wall(character,direction)
 
     def read_map(self):
         """
