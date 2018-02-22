@@ -38,4 +38,3 @@ https://www.reddit.com/r/dailyprogrammer/comments/4vrb8n/weekly_25_escape_the_tr
 ### 180222
 - Add push the wall mechanics
 - Add squish the zombie mechanics
->>>>>>> 183a31f579d253f64c2ab7e2e2da3bee07de79e7
