@@ -2,6 +2,8 @@
 
 __A fun project that was created as a challenge to better accustom myself with Python__
 
+![Animaton][Gif1]
+
 ## Story
 
 As you were walking back home from the Pub, you pass out on the Northern Line tube for 3 hours. When you wake up, you find yourself in a _Dungeon_. You don't know how you got there and your phone is completely out of battery. _Horrible!_ you say thinking that now you might have to look people in the eye on the tube. Anyway! 
@@ -38,3 +40,5 @@ https://www.reddit.com/r/dailyprogrammer/comments/4vrb8n/weekly_25_escape_the_tr
 ### 180222
 - Add push the wall mechanics
 - Add squish the zombie mechanics
+
+[Gif1]: https://i.imgur.com/nhpGprV.gif
