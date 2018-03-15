@@ -1,6 +1,8 @@
 # Escape_The_Zombie_Trolls
 
-__A fun project that was created as a challenge to learn Python__
+__A fun project that was created as a challenge to better accustom myself with Python__
+
+![Animaton][Gif1]
 
 ## Story
 
@@ -28,3 +30,15 @@ The Zombie_Troll will get *squashed* and die. No loosing this time.
 the idea of the project came from :
 
 https://www.reddit.com/r/dailyprogrammer/comments/4vrb8n/weekly_25_escape_the_trolls/
+
+=======
+# To Do list
+#### 180218
+- ~~Simplify the movement functions~~
+#### 180219
+- ~~Change direction to tuple see example~~
+### 180222
+- Add push the wall mechanics
+- Add squish the zombie mechanics
+
+[Gif1]: https://i.imgur.com/nhpGprV.gif
