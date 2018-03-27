@@ -38,7 +38,7 @@ https://www.reddit.com/r/dailyprogrammer/comments/4vrb8n/weekly_25_escape_the_tr
 #### 180219
 - ~~Change direction to tuple see example~~
 ### 180222
-- Add push the wall mechanics
+- ~Add push the wall mechanics~
 - Add squish the zombie mechanics
 
 [Gif1]: https://i.imgur.com/nhpGprV.gif
