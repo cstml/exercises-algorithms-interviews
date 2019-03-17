@@ -36,8 +36,27 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        string* i;
-        for (i=s[0];i;i++)
-            printf("%s",i);
+        int lengthOfString;
+        int longestSubstringFound = -1;
+        lengthOfString = s.length();
+
+        for (int i=0;i<lengthOfString;i++)
+        {
+            for(int j=i+2;j<lengthOfString;j++)
+            {
+                int temp_i = i;
+                int temp_j = j;
+                int currentLengthOfSubstring = 0;
+                while(s[temp_i]==s[temp_j] && temp_i<j)
+                {
+                        currentLengthOfSubstring++;
+                        temp_i++;
+                        temp_j++;
+                }
+                if (currentLengthOfSubstring > longestSubstringFound)
+                        longestSubstringFound = currentLengthOfSubstring;
+            }
+        }
+        return longestSubstringFound;
     }
 };
