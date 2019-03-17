@@ -40,23 +40,77 @@ public:
         int longestSubstringFound = -1;
         lengthOfString = s.length();
 
+        struct Node{
+                int indices;
+                struct Node *previousNode;
+                struct Node *nextNode;
+                Node(int i): indices(i), previousNode(NULL), nextNode(NULL) {}
+        };
+
+        struct Hash{
+                int counter=0;
+                struct Node *firstNode = NULL;
+                struct Node *lastNode = NULL;
+        };
+
+        struct Node* hashTable[900];
+        struct Hash* stringHash[900] ;
         for (int i=0;i<lengthOfString;i++)
         {
-            for(int j=i+2;j<lengthOfString;j++)
-            {
-                int temp_i = i;
-                int temp_j = j;
-                int currentLengthOfSubstring = 0;
-                while(s[temp_i]==s[temp_j] && temp_i<j)
+                int letterIndices = (int)s[i] - (int)'a';                             //determine which letter it is
+                struct Node* newNode = new Node(i);                             //create a new node
+                hashTable[i] = newNode;                                         //link the new node to the position in the string
+                if (!stringHash[letterIndices])
+                        stringHash[letterIndices] = new Hash();
+                if (stringHash[letterIndices]->counter != 0)
                 {
-                        currentLengthOfSubstring++;
-                        temp_i++;
-                        temp_j++;
+                        struct Node* oldLastNode = stringHash[letterIndices]->lastNode;        //get the before last occurrence of the letter
+                        oldLastNode->nextNode = newNode;                                 //link the two nodes
+                        newNode->previousNode = oldLastNode;
+                        stringHash[letterIndices]->lastNode=newNode;          //current becomes last occurence
+                        stringHash[letterIndices]->counter++;
                 }
-                if (currentLengthOfSubstring > longestSubstringFound)
-                        longestSubstringFound = currentLengthOfSubstring;
-            }
+                else
+                {
+                        stringHash[letterIndices]->firstNode = newNode;
+                        stringHash[letterIndices]->lastNode = newNode;
+                        stringHash[letterIndices]->counter++;
+                }
         }
+
+        for (int i=0;i<lengthOfString;i++)
+        {
+
+        }
+/*
+        struct ListNode* currentNode = new ListNode(0);
+        struct ListNode* firstNode = currentNode;
+        for (int i=0;i<lengthOfString;i++)
+        {
+                int j=i+1;
+                while(s[i]==s[j] && i<lengthOfString && j<lengthOfString)
+                {
+                        j++;
+                }
+        }
+        for (int i=0;i<lengthOfString;i++)
+        {
+                for(int j=i+2;j<lengthOfString;j++)
+                {
+                        int temp_i = i;
+                        int temp_j = j;
+                        int currentLengthOfSubstring = 0;
+                        while(s[temp_i]==s[temp_j] && temp_i<j)
+                        {
+                                currentLengthOfSubstring++;
+                                temp_i++;
+                                temp_j++;
+                        }
+                        if (currentLengthOfSubstring > longestSubstringFound)
+                                longestSubstringFound = currentLengthOfSubstring;
+                }
+        }
+        */
         return longestSubstringFound;
     }
 };
