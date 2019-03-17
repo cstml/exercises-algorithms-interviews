@@ -80,7 +80,10 @@ public:
 
         for (int i=0;i<lengthOfString;i++)
         {
-
+                //TO DO
+                //Implement the hash way of searching for the substring
+                //It should be fairly forward
+                //right?
         }
 /*
         struct ListNode* currentNode = new ListNode(0);
