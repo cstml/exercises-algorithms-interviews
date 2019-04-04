@@ -1,0 +1,5 @@
+Zombie:<__main__.zombie_character object at 0x1013ee450>
+Zombie:<__main__.zombie_character object at 0x1013ee490>
+<__main__.zombie_character object at 0x1013ee490> moves to Direction(x=-1, y=0)
+<__main__.zombie_character object at 0x1013ee490> moves to Direction(x=-1, y=0)
+<__main__.zombie_character object at 0x1013ee490> moves to Direction(x=-1, y=0)
