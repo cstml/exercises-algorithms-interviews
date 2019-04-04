@@ -1,4 +1,4 @@
-# Solutions_Problems_Exercise_Library
+# Solutions and Problems Exercise Library
 
 Hi, and welcome to my library of solutions problems that I have attempted. 
 
