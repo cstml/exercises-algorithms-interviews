@@ -26,34 +26,34 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        
-        int trail=0;
-        struct ListNode* currentNode = new ListNode(NULL);
-        
-        struct ListNode* firstNode = currentNode;
-        
-        while (trail || l1 || l2)
+class Solution 
+{
+    public:
+        ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) 
         {
-            
-            currentNode-> val = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + trail;
-            if (l1)//next number
-                l1=l1->next;
-            if(l2)//next number
-                l2=l2->next;
-            trail = currentNode->val / 10;
-            currentNode->val %= 10;
+            int trail=0;
+            struct ListNode* currentNode = new ListNode(NULL);
 
-            ListNode* nextNode = new ListNode(NULL);
-            
-            if (trail || l1 || l2) //if there is any other number or a trail
+            struct ListNode* firstNode = currentNode;
+
+            while (trail || l1 || l2)
             {
-                currentNode->next = nextNode;
-                currentNode = nextNode;
+                currentNode-> val = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + trail;
+                if (l1)//next number
+                    l1=l1->next;
+                if(l2)//next number
+                    l2=l2->next;
+                trail = currentNode->val / 10;
+                currentNode->val %= 10;
+
+                ListNode* nextNode = new ListNode(NULL);
+
+                if (trail || l1 || l2) //if there is any other number or a trail
+                {
+                    currentNode->next = nextNode;
+                    currentNode = nextNode;
+                }
             }
+            return firstNode;
         }
-        return firstNode;
-    }
 };
