@@ -1,15 +1,16 @@
 CC = g++
 
-SRC_FILES := $(wildcard *.cpp)
-OBJ_FILES := $(patsubst %.cpp,%.o,$(SRC_FILES))
+SRC_FILES := main.cpp mother.cpp daughter.cpp
+CPP_FILES := $( %.cpp)
 TARGET := test
+OBJ_FILES := main.o mother.o daughter.o
 
 all: $(TARGET)
 	./$(TARGET)
 
 $(TARGET) : $(OBJ_FILES)
-	$(CC) -o $@ $^ -I .
+	$(CC) -o main.cpp $(OBJ_Files) -I .
 
-%.o : %.cpp
-	$(CC) -c $<
+$(OBJ_FILES) : $(SRC_FILES)
+	$(CC) -c $^ -I .
 

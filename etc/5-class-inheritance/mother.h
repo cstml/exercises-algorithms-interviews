@@ -11,6 +11,7 @@ class Mother
 {
     public:
         void SayHello();
+        void SayGoodbye();
     private:
     protected:
 };
