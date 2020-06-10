@@ -7,16 +7,14 @@
 #include <string>
 
 
-void Mother::SayHello()
+Mother::Mother()
 {
-    string char name = "Mother";
-    // prints hello to the console
-    // and returns nothing
-    std::cout<<"Hi I am a"<<name<<"class \n";
-    return;
 }
 
-void Mother::SayGoodbye()
+void Mother::SayHello()
 {
-    std::cout<<"Goodbye!"<<std::endl;
+    // prints hello to the console
+    // and returns nothing
+    std::cout<<"Hi I am a Mother class \n";
+    return;
 }

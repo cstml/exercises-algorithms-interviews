@@ -7,11 +7,13 @@
 #ifndef MOTHER_H
 #define MOTHER_H
 
+#include <string>
+
 class Mother
 {
     public:
+        Mother();
         void SayHello();
-        void SayGoodbye();
     private:
     protected:
 };

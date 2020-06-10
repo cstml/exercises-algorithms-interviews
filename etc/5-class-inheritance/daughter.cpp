@@ -1,17 +1,20 @@
-//daughter.cpp
+//brother.cpp
 //
-//this is where I define what the daughter class
+//this is where I define what the brother class
 //does
-#include "daughter.h"
+#include "brother.h"
 #include <iostream>
 #include <string>
 
+Brother::Brother()
+{}
 
-void Daughter::SayHello()
+Brother::Brother (std::string s)  
+    :name(s)
+{}
+
+void Brother::SayHello ()
 {
-    string char name  = "Daughter";
-    // prints hello to the console
-    // and returns nothing
-    std::cout<<"Hi I am a"<<name<<"class \n";
+    std::cout<<"Hi my name is "<<name<<std::endl;
     return;
 }
