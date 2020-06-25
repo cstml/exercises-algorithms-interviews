@@ -1,17 +1,16 @@
 #include <map>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 class Solution {
 public:
-    int findDuplicate(std::vector<int>& nums) 
+    int findDuplicate(std::vector<int> nums) 
     {
-        std::map<int,int> m;
-        std::pair<std::map<int,int>::iterator,bool> it;
-        for (unsigned long i =0; i< nums.size();i++)
+        std::sort(nums.begin(),nums.end());
+        for (unsigned long i =0; i< nums.size()-1;i++)
         {
-            it=m.insert(std::pair<int,int>(nums[i],nums[i]));
-            if (it.second == false)
+            if (nums[i]==nums[i+1])
                 return nums[i];
         }
         return 0;
