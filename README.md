@@ -2,4 +2,4 @@
 A repo of my leetcode problem solving
 
 # Update
-I am currently doing the June 30 day challenge 
+- [x] Finished June 30 day challenge 2020
