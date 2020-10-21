@@ -1,0 +1,91 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+
+#define log(A) std::cout<<A<<std::endl
+#define ll long long
+
+
+
+class Solution {
+public:
+
+    int sz_x;
+    int sz_y;
+    std::vector<std::vector<bool>> visited;
+    std::vector<std::vector<int>> maxMin;
+
+    template <class P>
+    void initMat (std::vector<std::vector<P>>& destMat ,P initInfo)
+    {
+        for (int i=0;i<sz_y;i++)
+        {
+            std::vector<P> tmp;
+            for (int j=0 ; j<sz_x ; j++)
+            {
+                tmp.push_back(initInfo);
+            }
+            destMat.push_back(tmp);
+        }
+    }
+
+    void goMat(int posx, int posy, int actual, int rolling, const std::vector<std::vector<int>>& dungeon)
+    {
+        actual += dungeon[posy][posx];
+
+        if (actual<rolling)
+            rolling=actual;
+
+        if(!visited[posy][posx])
+        {
+            maxMin[posy][posx] = rolling;
+            visited[posy][posx] = true;
+        }
+
+        else
+            if(maxMin[posy][posx] < rolling)
+                maxMin[posy][posx]=rolling;
+
+        if (posx == sz_x - 1 && posy == sz_y-1)
+            return;
+
+        else
+        {
+            if (posx+1<sz_x)
+                goMat(posx+1,posy,actual,rolling,dungeon);
+            if (posy+1<sz_y)
+                goMat(posx,posy+1,actual,rolling,dungeon);
+        }
+            
+    }
+
+    int calculateMinimumHP(std::vector<std::vector<int>>& dungeon) 
+    {
+        sz_x= dungeon[0].size();
+        sz_y= dungeon.size();
+
+        initMat(visited,false);
+        initMat(maxMin,0);
+
+
+        goMat(0,0,0,0,dungeon);
+
+        int mM = maxMin[sz_y-1][sz_x-1];
+        if (mM>0)
+            return 1;
+        else
+            return 1-maxMin[sz_y-1][sz_x-1];
+    }
+};
+
+
+int main()
+{
+    Solution s;
+
+    std::vector<std::vector<int>> temp = {{-2,-3,3},{-5,-10,1},{10,30,-5}};
+    log(s.calculateMinimumHP(temp));
+
+	return 1;
+}

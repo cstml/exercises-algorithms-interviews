@@ -1,5 +1,7 @@
 CMP := g++
-FLG := -g -Wall
+FLG := -g -Wall -ftime-report   \
+	   -fmem-report -fpre-ipa-mem-report -fpost-ipa-mem-report \
+	   -time
 SRC := $(wildcard *.cpp)
 OBJ := $(patsubst %.cpp,%.o,$(SRC))
 TRG := exec

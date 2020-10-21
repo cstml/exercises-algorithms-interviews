@@ -1,0 +1,4 @@
+g++ -c -g -Wall -ftime-report -fmem-report -fpre-ipa-mem-report -fpost-ipa-mem-report souce.cpp 
+g++ -g -Wall -ftime-report -fmem-report -fpre-ipa-mem-report -fpost-ipa-mem-report souce.o -o exec
+./exec
+2

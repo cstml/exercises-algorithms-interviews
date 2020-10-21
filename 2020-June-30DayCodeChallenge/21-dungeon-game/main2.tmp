@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+
+#define log(A) std::cout<<A<<std::endl
+
+int main()
+{
+    Solution s;
+
+	log("Hello World");
+
+	return 1;
+}
