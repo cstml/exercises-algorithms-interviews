@@ -1,0 +1,14 @@
+* Exercises, Algorithms, Interviews
+ 
+ - A repository of my answers to competitions, interview tasks or standard
+   algorithms.
+
+ - There will be answers that I will ommit from this repository as I sometimes:
+   - Am unable to add it due to terms and conditions of the competition
+   - Forget to add it (happens)
+ 
+ - Sometimes the solutions will be untidy, but that is a reflection of the
+   nature of under pressure programming (sometimes)
+
+ - Initially this repository was spread across multiple repositories, for ease
+   of reference I have chosen to merge them all in one (this one)
